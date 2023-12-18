@@ -26,23 +26,6 @@ const Task = ({settasks, ...props}) => {
         settasks([...l1, t1])
     }
 
-    // function GetNavigation(task) {
-    //     let res = '<button className=\'btn btn-danger  btn-sm\' onClick={e => delTask(e)}>DEL</button>';
-    //     if(task.status !== 'To Do') {
-    //         res += '<button className=\'btn btn-warning btn-sm\' onClick={e => tdTask(e)}>TD</button>'
-    //         return <button className='btn btn-danger  btn-sm' onClick={e => delTask(e)}>DEL</button>
-    //         <button className='btn btn-warning btn-sm' onClick={e => tdTask(e)}>TD</button>
-    //         <button className='btn btn-primary btn-sm' onClick={e => ipTask(e)}>IP</button>
-    //         <button className='btn btn-success btn-sm' onClick={e => doneTask(e)}>DN</button>
-    //     }
-    //     if (task.status !== 'in Progress') {
-    //         res += '<button className=\'btn btn-primary btn-sm\' onClick={e => ipTask(e)}>IP</button>'
-    //     }
-    //     if (task.status !== 'Done') {
-    //         res += '<button className=\'btn btn-success btn-sm\' onClick={e => doneTask(e)}>DN</button>'
-    //     }
-    //     return res;
-    // }
     function GetNavigationTD(task) {
         if(task.props.status !== 'To Do') {
             return <button className='btn btn-warning btn-sm' onClick={e => tdTask(e)}>TD</button>
