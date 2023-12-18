@@ -10,10 +10,10 @@ import Addtask from "./components/manager/addtask";
 
 function App() {
     const [tasks, setTasks] = useState([
-        {id: 1, title:'Test1', description:'Test in app', owner:'Seva', createDate:'13.12.2023', status: 'To Do', type:'task', priority:'common', epic:'React-app', bg:'white'},
-        {id: 2, title:'Test2', description:'Test in app', owner:'Seva', createDate:'13.12.2023', status: 'In Progress', type:'task', priority:'common', epic:'React-app', bg:'white'},
-        {id: 3, title:'Test3', description:'Test in app', owner:'Seva', createDate:'13.12.2023', status: 'To Do', type:'task', priority:'common', epic:'React-app', bg:'white'},
-        {id: 4, title:'Test4', description:'Test in app', owner:'Seva', createDate:'13.12.2023', status: 'Done', type:'task', priority:'common', epic:'React-app', bg:'white'}
+        {id: 1, title:'Test1', description:'Test in app', owner:'Seva', createDate:'2023-12-01', status: 'To Do', type:'task', priority:'common', epic:'React-app', bg:'white'},
+        {id: 2, title:'Test2', description:'Test in app', owner:'Miras', createDate:'2023-12-04', status: 'In Progress', type:'task', priority:'common', epic:'React-app', bg:'white'},
+        {id: 3, title:'Test3', description:'Test in app', owner:'Seva', createDate:'2023-12-03', status: 'To Do', type:'task', priority:'common', epic:'React-app', bg:'white'},
+        {id: 4, title:'Test4', description:'Test in app', owner:'Ahmed', createDate:'2023-12-02', status: 'Done', type:'task', priority:'common', epic:'React-app', bg:'white'}
     ])
 
     // console.log(tasks);

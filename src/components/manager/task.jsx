@@ -2,28 +2,28 @@ import React from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import '../style/card.css'
 
-const Task = (props) => {
+const Task = ({settasks, ...props}) => {
     const delTask = (e) => {
-        // props.settasks(props.tasks.splice(props.tasks.indexOf(e.target.value), 1))
-        props.settasks(props.tasks.filter(p => p.id !== props.task.id))
+        // settasks(props.tasks.splice(props.tasks.indexOf(e.target.value), 1))
+        settasks(props.tasks.filter(p => p.id !== props.task.id))
     }
     const tdTask = (e) => {
         let t1 = props.task;
         t1.status = 'To Do'
         let l1 = props.tasks.filter(p => p.id !== props.task.id)
-        props.settasks([...l1, t1])
+        settasks([...l1, t1])
     }
     const ipTask = (e) => {
         let t1 = props.task;
         t1.status = 'In Progress'
         let l1 = props.tasks.filter(p => p.id !== props.task.id)
-        props.settasks([...l1, t1])
+        settasks([...l1, t1])
     }
     const doneTask = (e) => {
         let t1 = props.task;
         t1.status = 'Done'
         let l1 = props.tasks.filter(p => p.id !== props.task.id)
-        props.settasks([...l1, t1])
+        settasks([...l1, t1])
     }
 
     // function GetNavigation(task) {
