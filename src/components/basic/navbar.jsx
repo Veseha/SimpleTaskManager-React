@@ -1,32 +1,36 @@
 import React from 'react';
 import logo from '../style/logo.png'
 import Addtask from "../manager/addtask";
+import {Link} from "react-router-dom";
 
 const Navbar = (props) => {
     return (
         <div>
             <nav className="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="#">
+                    <Link className="navbar-brand" to="/">
                         <img src={logo} alt="Bootstrap" width="35" height="35"/>
-                    </a>
+                    </Link>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <a className="nav-link disable" aria-current="page" href="#">View all</a>
+                                <Link className="nav-link disable" aria-current="page" to="#">View all</Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link active" aria-current="page" href="#" data-bs-toggle="modal"
-                                   data-bs-target="#addtask">Add task</a>
+                                <Link className="nav-link active" aria-current="page" to="#" data-bs-toggle="modal"
+                                   data-bs-target="#addtask">Add task</Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link disable" aria-current="page" href="#">Switch interface</a>
+                                <Link className="nav-link disable" aria-current="page" to="#">Switch interface</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link active" aria-current="page" to="/about">About</Link>
                             </li>
                         </ul>
                     </div>
                     <div className="d-flex">
                         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li className="nav-item">
                                     <a className="nav-link disable">Temperature in Almaty:</a>
 
