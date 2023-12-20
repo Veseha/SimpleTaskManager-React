@@ -1,12 +1,12 @@
 import React, {useMemo, useState} from 'react';
 import Column from "./column";
-import '../style/kanban.css'
+import '../../style/kanban.css'
 import { DndProvider } from "react-dnd";
 import {HTML5Backend} from "react-dnd-html5-backend";
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
-import Sort from "./sort";
-import Search from "./search";
-import FilterManager from "./filter_manager";
+import Sort from "../tasks_filter/sort";
+import Search from "../tasks_filter/search";
+import FilterManager from "../tasks_filter/filter_manager";
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
 
@@ -22,7 +22,7 @@ const Kanban = (props) => {
     }, [selectedSort, props.tasks]);
 
     const sortedSearchedTasks = useMemo(()=>{
-        // return sortedTasks.filter(task => task.title.toLowerCase().includes(searchQuery.toLowerCase()))
+        // return sortedTasks.tasks_filter(task => task.title.toLowerCase().includes(searchQuery.toLowerCase()))
         return sortedTasks.filter(task =>
             task.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
             task.owner.toLowerCase().includes(searchQuery.toLowerCase()) ||

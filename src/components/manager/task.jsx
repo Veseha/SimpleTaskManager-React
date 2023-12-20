@@ -1,54 +1,84 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import '../style/card.css'
+import task_card from "./task_card";
+import ColorMenu from "./tasks/color_menu";
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { icon } from '@fortawesome/fontawesome-svg-core/import.macro'
 
 const Task = ({settasks, ...props}) => {
     const delTask = (e) => {
         // settasks(props.tasks.splice(props.tasks.indexOf(e.target.value), 1))
         settasks(props.tasks.filter(p => p.id !== props.task.id))
     }
-    const tdTask = (e) => {
-        let t1 = props.task;
-        t1.status = 'To Do'
-        let l1 = props.tasks.filter(p => p.id !== props.task.id)
-        settasks([...l1, t1])
-    }
-    const ipTask = (e) => {
-        let t1 = props.task;
-        t1.status = 'In Progress'
-        let l1 = props.tasks.filter(p => p.id !== props.task.id)
-        settasks([...l1, t1])
-    }
-    const doneTask = (e) => {
-        let t1 = props.task;
-        t1.status = 'Done'
-        let l1 = props.tasks.filter(p => p.id !== props.task.id)
-        settasks([...l1, t1])
-    }
+    // const tdTask = (e) => {
+    //     let t1 = props.task;
+    //     t1.status = 'To Do'
+    //     let l1 = props.tasks.filter(p => p.id !== props.task.id)
+    //     settasks([...l1, t1])
+    // }
+    // const ipTask = (e) => {
+    //     let t1 = props.task;
+    //     t1.status = 'In Progress'
+    //     let l1 = props.tasks.filter(p => p.id !== props.task.id)
+    //     settasks([...l1, t1])
+    // }
+    // const doneTask = (e) => {
+    //     let t1 = props.task;
+    //     t1.status = 'Done'
+    //     let l1 = props.tasks.filter(p => p.id !== props.task.id)
+    //     settasks([...l1, t1])
+    // }
 
-    function GetNavigationTD(task) {
-        if(task.props.status !== 'To Do') {
-            return <button className='btn btn-warning btn-sm' onClick={e => tdTask(e)}>TD</button>
-        }
-        return <div></div>;
-    }
-    function GetNavigationIP(task) {
-        if(task.props.status !== 'In Progress') {
-            return <button className='btn btn-primary btn-sm' onClick={e => ipTask(e)}>IP</button>
-        }
-        return <div></div>;
-    }
+    // function GetNavigationTD(task) {
+    //     if(task.props.status !== 'To Do') {
+    //         return <button className='btn btn-warning btn-sm' onClick={e => tdTask(e)}>TD</button>
+    //     }
+    //     return <div></div>;
+    // }
+    // function GetNavigationIP(task) {
+    //     if(task.props.status !== 'In Progress') {
+    //         return <button className='btn btn-primary btn-sm' onClick={e => ipTask(e)}>IP</button>
+    //     }
+    //     return <div></div>;
+    // }
+    //
+    // function GetNavigationDN(task) {
+    //     if(task.props.status !== 'Done') {
+    //         return <button className='btn btn-success btn-sm' onClick={e => doneTask(e)}>DN</button>
+    //     }
+    //     return <div></div>;
+    // }
 
-    function GetNavigationDN(task) {
-        if(task.props.status !== 'Done') {
-            return <button className='btn btn-success btn-sm' onClick={e => doneTask(e)}>DN</button>
-        }
-        return <div></div>;
-    }
+    const [showColorMenu, setShowColorMenu] = useState(false);
+    const [selectedColor, setSelectedColor] = useState(props.task.bg);
+
+    const handleColorChange = (color) => {
+        console.log(props.tasks)
+        let curtask = props.task;
+        curtask.bg = color;
+        console.log({...props.tasks.filter(p => p.id !== props.task.id), curtask})
+
+        settasks([...props.tasks.filter(p => p.id !== props.task.id), curtask])
+        // settasks(
+        //     ...tasks,
+        //     bg: color
+        // );
+        console.log('ok')
+        // setSelectedColor(color);
+        // setShowColorMenu(false);
+    };
+
+
+    // const [isPopoverVisible, setIsPopoverVisible] = useState(false);
+    //
+    // const togglePopover = () => {
+    //     setIsPopoverVisible(!isPopoverVisible);
+    // };
 
     return (
         <div>
-            <div className="two">
+            <div className="two" style={{backgroundColor: props.task.bg }}>
                 <div className="container text-center">
                     <div className="row">
                         <div className="col">
@@ -71,20 +101,38 @@ const Task = ({settasks, ...props}) => {
                             </div>
                         </div>
                         <div className="col-3">
-                            <div className="btn-group-vertical pt-2  justify-content-end" role="group" aria-label="Vertical button group">
+
+                            <button className='btn btn-secondary-outline  btn-sm' style={{margin: '1rem'}}
+                                    onClick={e => delTask(e)}>
+                                <span className="material-symbols-outlined"> delete</span>
+                            </button>
+
+                            {/*<div className="btn-group-vertical pt-2  justify-content-end" role="group"*/}
+                            {/*     aria-label="Vertical button group">*/}
+                            {/*    <button className='btn btn-danger  btn-sm' onClick={e => delTask(e)}>DEL</button>*/}
+                            {/*    <GetNavigationTD props={props.task}/>*/}
+                            {/*    <GetNavigationIP props={props.task}/>*/}
+                            {/*    <GetNavigationDN props={props.task}/>*/}
+                            {/*</div>*/}
+                            {/*</div>*/}
 
 
-                                <button className='btn btn-danger  btn-sm' onClick={e => delTask(e)}>DEL</button>
-                                <GetNavigationTD props={props.task}/>
-                                <GetNavigationIP props={props.task}/>
-                                <GetNavigationDN props={props.task}/>
+                            {/*<div className="col-3">*/}
+                            <button
+                                className='btn btn-secondary-outline btn-sm'
+                                // data-bs-toggle="modal" data-bs-target={"#colormenu" + props.task.id}
+                                style={{margin: '1rem'}}
+                                onClick={() => setShowColorMenu(!showColorMenu)}
+                            >
+                                <span className="material-symbols-outlined">Settings</span>
+                            </button>
 
-                                {/*<button className='btn btn-warning btn-sm' onClick={e => tdTask(e)}>TD</button>*/}
 
-                                {/*<button className='btn btn-primary btn-sm' onClick={e => ipTask(e)}>IP</button>*/}
+                            {showColorMenu && (
+                                <ColorMenu handleColorChange={handleColorChange} props={props}>
 
-                                {/*<button className='btn btn-success btn-sm' onClick={e => doneTask(e)}>DN</button>*/}
-                            </div>
+                                </ColorMenu>
+                            )}
                         </div>
                     </div>
                 </div>

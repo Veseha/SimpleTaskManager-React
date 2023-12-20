@@ -128,3 +128,73 @@
     position: relative;
     top: 2px;
 }
+
+/*.popover-container {*/
+/*    position: relative;*/
+/*    display: inline-block;*/
+/*}*/
+
+/*.popover {*/
+/*    position: absolute;*/
+/*    top: 0;*/
+/*    right: 100%; !* Отступ справа от вызываемого элемента *!*/
+/*    background-color: #fff;*/
+/*    border: 1px solid #ccc;*/
+/*    padding: 8px;*/
+/*    min-width: 150px;*/
+/*    z-index: 1;*/
+/*}*/
+
+.color-menu {
+    position: absolute;
+    top: 16%;
+    right: -10%;
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    padding: 5px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    z-index: 999;
+    border-radius: 1rem;
+    /*opacity: 0;*/
+    /*transition: opacity 0.3s ease-out 1s;*/
+}
+
+
+    /*.color-menu:hover {*/
+    /*    opacity: 1;*/
+    /*    transition: opacity 0.3s ease-out 0s;*/
+    /*}*/
+
+/*.color-menu:not(:hover) {*/
+/*    opacity: 1;*/
+/*    pointer-events: none; !* Это предотвращает взаимодействие с элементом после его скрытия *!*/
+/*}*/
+
+.color-option {
+    width: 20px;
+    height: 20px;
+    margin: 3px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid ;
+}
+
+/* Закрывает меню при клике за его пределами */
+/*body {*/
+/*    position: relative;*/
+/*}*/
+
+/*.color-menu:after {*/
+/*    content: "";*/
+/*    position: fixed;*/
+/*    top: 0;*/
+/*    right: 0;*/
+/*    bottom: 0;*/
+/*    left: 0;*/
+/*    z-index: 998;*/
+/*}*/
+
+.col{
+    margin-bottom: 0.3rem;
+}
