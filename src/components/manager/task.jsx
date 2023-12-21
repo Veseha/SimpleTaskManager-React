@@ -11,44 +11,7 @@ const Task = ({settasks, ...props}) => {
     }
 
     const route = useNavigate();
-    // const tdTask = (e) => {
-    //     let t1 = props.task;
-    //     t1.status = 'To Do'
-    //     let l1 = props.tasks.filter(p => p.id !== props.task.id)
-    //     settasks([...l1, t1])
-    // }
-    // const ipTask = (e) => {
-    //     let t1 = props.task;
-    //     t1.status = 'In Progress'
-    //     let l1 = props.tasks.filter(p => p.id !== props.task.id)
-    //     settasks([...l1, t1])
-    // }
-    // const doneTask = (e) => {
-    //     let t1 = props.task;
-    //     t1.status = 'Done'
-    //     let l1 = props.tasks.filter(p => p.id !== props.task.id)
-    //     settasks([...l1, t1])
-    // }
 
-    // function GetNavigationTD(task) {
-    //     if(task.props.status !== 'To Do') {
-    //         return <button className='btn btn-warning btn-sm' onClick={e => tdTask(e)}>TD</button>
-    //     }
-    //     return <div></div>;
-    // }
-    // function GetNavigationIP(task) {
-    //     if(task.props.status !== 'In Progress') {
-    //         return <button className='btn btn-primary btn-sm' onClick={e => ipTask(e)}>IP</button>
-    //     }
-    //     return <div></div>;
-    // }
-    //
-    // function GetNavigationDN(task) {
-    //     if(task.props.status !== 'Done') {
-    //         return <button className='btn btn-success btn-sm' onClick={e => doneTask(e)}>DN</button>
-    //     }
-    //     return <div></div>;
-    // }
 
     const [showColorMenu, setShowColorMenu] = useState(false);
     // const [selectedColor, setSelectedColor] = useState(props.task.bg);
