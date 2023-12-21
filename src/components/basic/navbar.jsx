@@ -1,6 +1,4 @@
 import React from 'react';
-import logo from '../style/logo.png'
-import Addtask from "../manager/addtask";
 import {Link} from "react-router-dom";
 
 const Navbar = (props) => {
@@ -9,19 +7,22 @@ const Navbar = (props) => {
             <nav className="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
                 <div className="container-fluid">
                     <Link className="navbar-brand" to="/">
-                        <img src={logo} alt="Bootstrap" width="35" height="35"/>
+                        {/*<img src={logo} alt="Bootstrap" width="35" height="35"/>*/}
+                        <span className="material-symbols-outlined material-symbols-outlined-big" >task_alt</span>
+
                     </Link>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <Link className="nav-link disable" aria-current="page" to="#">View all</Link>
+                                <Link className="nav-link active" aria-current="page" to="/">Kanban</Link>
+                            </li>
+
+                            <li className="nav-item">
+                            <Link className="nav-link disable" aria-current="page" to="#">List</Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link active" aria-current="page" to="#" data-bs-toggle="modal"
-                                   data-bs-target="#addtask">Add task</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link disable" aria-current="page" to="#">Switch interface</Link>
+                                      data-bs-target="#addtask">Add task</Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link active" aria-current="page" to="/about">About</Link>

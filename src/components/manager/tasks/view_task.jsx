@@ -1,80 +1,14 @@
-import React, {useState} from 'react';
-import '../style/card.css'
-import ColorMenu from "./tasks/color_menu";
+import React from 'react';
 
-const Task = ({settasks, ...props}) => {
+const ViewTask = (props) => {
     const delTask = (e) => {
         // settasks(props.tasks.splice(props.tasks.indexOf(e.target.value), 1))
         settasks(props.tasks.filter(p => p.id !== props.task.id))
     }
-    // const tdTask = (e) => {
-    //     let t1 = props.task;
-    //     t1.status = 'To Do'
-    //     let l1 = props.tasks.filter(p => p.id !== props.task.id)
-    //     settasks([...l1, t1])
-    // }
-    // const ipTask = (e) => {
-    //     let t1 = props.task;
-    //     t1.status = 'In Progress'
-    //     let l1 = props.tasks.filter(p => p.id !== props.task.id)
-    //     settasks([...l1, t1])
-    // }
-    // const doneTask = (e) => {
-    //     let t1 = props.task;
-    //     t1.status = 'Done'
-    //     let l1 = props.tasks.filter(p => p.id !== props.task.id)
-    //     settasks([...l1, t1])
-    // }
-
-    // function GetNavigationTD(task) {
-    //     if(task.props.status !== 'To Do') {
-    //         return <button className='btn btn-warning btn-sm' onClick={e => tdTask(e)}>TD</button>
-    //     }
-    //     return <div></div>;
-    // }
-    // function GetNavigationIP(task) {
-    //     if(task.props.status !== 'In Progress') {
-    //         return <button className='btn btn-primary btn-sm' onClick={e => ipTask(e)}>IP</button>
-    //     }
-    //     return <div></div>;
-    // }
-    //
-    // function GetNavigationDN(task) {
-    //     if(task.props.status !== 'Done') {
-    //         return <button className='btn btn-success btn-sm' onClick={e => doneTask(e)}>DN</button>
-    //     }
-    //     return <div></div>;
-    // }
-
-    const [showColorMenu, setShowColorMenu] = useState(false);
-    const [selectedColor, setSelectedColor] = useState(props.task.bg);
-
-    const handleColorChange = (color) => {
-        console.log(props.tasks)
-        let curtask = props.task;
-        curtask.bg = color;
-        console.log({...props.tasks.filter(p => p.id !== props.task.id), curtask})
-
-        settasks([...props.tasks.filter(p => p.id !== props.task.id), curtask])
-        // settasks(
-        //     ...tasks,
-        //     bg: color
-        // );
-        console.log('ok')
-        // setSelectedColor(color);
-        // setShowColorMenu(false);
-    };
-
-
-    // const [isPopoverVisible, setIsPopoverVisible] = useState(false);
-    //
-    // const togglePopover = () => {
-    //     setIsPopoverVisible(!isPopoverVisible);
-    // };
 
     return (
         <div>
-            <div className="two" style={{backgroundColor: props.task.bg }}>
+            <div className="three" style={{backgroundColor: props.task.bg}}>
                 <div className="container text-center">
                     <div className="row">
                         <div className="col">
@@ -124,18 +58,12 @@ const Task = ({settasks, ...props}) => {
                             </button>
 
 
-
                         </div>
                     </div>
                 </div>
             </div>
-            {showColorMenu && (
-                <ColorMenu handleColorChange={handleColorChange} props={props}>
-
-                </ColorMenu>
-            )}
         </div>
     );
 };
 
-export default Task;
+export default ViewTask;
