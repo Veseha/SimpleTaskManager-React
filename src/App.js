@@ -5,6 +5,7 @@ import axios from "axios";
 import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
 import About from "./pages/about";
 import MainBoard from "./pages/main_board";
+import ViewTask from "./components/manager/tasks/view_task";
 
 function App() {
     const [weather, setWeather] = useState('')
@@ -35,11 +36,11 @@ function App() {
         <BrowserRouter>
             <Navbar weather={weather} change={fetchWeather}/>
             <Routes>
-                <Route path="/about" element={<About/>}/>
-                <Route path="/" element={<MainBoard  tasks={tasks} setTasks={setTasks}/>}/>
-                <Route path="*"
-                    element={<Navigate to="/" replace />}
-                />
+                <Route path="/about"    element={<About/>}/>
+                <Route path="/"         element={<MainBoard  tasks={tasks} setTasks={setTasks}/>}/>
+                <Route path="*"         element={<Navigate to="/" replace />}/>
+                <Route path="/task/:id" element={<ViewTask tasks={tasks} setTasks={setTasks}/>}/>
+
             </Routes>
         </BrowserRouter>
     )

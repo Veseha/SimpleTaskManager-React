@@ -1,12 +1,16 @@
 import React, {useState} from 'react';
 import '../style/card.css'
 import ColorMenu from "./tasks/color_menu";
+import Unclick from "../UI/unclick";
+import {useNavigate} from "react-router-dom";
 
 const Task = ({settasks, ...props}) => {
     const delTask = () => {
         // settasks(props.tasks.splice(props.tasks.indexOf(e.target.value), 1))
         settasks(props.tasks.filter(p => p.id !== props.task.id))
     }
+
+    const route = useNavigate();
     // const tdTask = (e) => {
     //     let t1 = props.task;
     //     t1.status = 'To Do'
@@ -56,24 +60,16 @@ const Task = ({settasks, ...props}) => {
         console.log({...props.tasks.filter(p => p.id !== props.task.id), curtask})
 
         settasks([...props.tasks.filter(p => p.id !== props.task.id), curtask])
-        // settasks(
-        //     ...tasks,
-        //     bg: color
-        // );
+
         console.log('ok')
         // setSelectedColor(color);
         // setShowColorMenu(false);
     };
 
 
-    // const [isPopoverVisible, setIsPopoverVisible] = useState(false);
-    //
-    // const togglePopover = () => {
-    //     setIsPopoverVisible(!isPopoverVisible);
-    // };
 
     return (
-        <div>
+        <div className='container-task'>
             <div className="two" style={{backgroundColor: props.task.bg }}>
                 <div className="container text-center">
                     <div className="row">
@@ -99,9 +95,13 @@ const Task = ({settasks, ...props}) => {
                         <div className="col-3">
 
                             <button className='btn btn-secondary-outline  btn-sm' style={{margin: '1rem'}}
-                                    onClick={e => delTask(e)}>
-                                <span className="material-symbols-outlined"> delete</span>
+                                    onClick={() => route('/task/'+props.task.id)}>
+                                <span className="material-symbols-outlined"> settings</span>
                             </button>
+                            {/*<button className='btn btn-secondary-outline  btn-sm' style={{margin: '1rem'}}*/}
+                            {/*        onClick={e => delTask(e)}>*/}
+                            {/*    <span className="material-symbols-outlined"> delete</span>*/}
+                            {/*</button>*/}
 
                             {/*<div className="btn-group-vertical pt-2  justify-content-end" role="group"*/}
                             {/*     aria-label="Vertical button group">*/}
@@ -120,9 +120,8 @@ const Task = ({settasks, ...props}) => {
                                 style={{margin: '1rem'}}
                                 onClick={() => setShowColorMenu(!showColorMenu)}
                             >
-                                <span className="material-symbols-outlined">Settings</span>
+                                <span className="material-symbols-outlined">palette</span>
                             </button>
-
 
 
                         </div>
@@ -133,6 +132,13 @@ const Task = ({settasks, ...props}) => {
                 <ColorMenu handleColorChange={handleColorChange} props={props}>
 
                 </ColorMenu>
+
+            )}
+            {showColorMenu && (
+                <Unclick func={setShowColorMenu}>
+
+                </Unclick>
+
             )}
         </div>
     );
