@@ -18,7 +18,7 @@ const Navbar = (props) => {
                             </li>
 
                             <li className="nav-item">
-                            <Link className="nav-link disable" aria-current="page" to="#">List</Link>
+                            <Link className="nav-link active" aria-current="page" to="/list">List</Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link active" aria-current="page" to="#" data-bs-toggle="modal"

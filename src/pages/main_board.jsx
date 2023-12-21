@@ -28,7 +28,7 @@ const MainBoard = ({tasks, setTasks, ...props}) => {
     return (
         <div className="App">
             <Kanban tasks={tasks1} settasks={setTasks1}/>
-            <Addtask tasks={tasks1} settasks={setTasks1}/>
+
         </div>
     );
 };

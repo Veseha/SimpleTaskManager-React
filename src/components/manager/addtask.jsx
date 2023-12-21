@@ -20,11 +20,11 @@ const Addtask = (props) => {
                 bg:'white'}
         props.settasks([...props.tasks, newTask])
 
-        // setStatus('')
-        // setDate('')
-        // setName('')
-        // setOwner('')
-        // setDesc('')
+        setStatus('')
+        setDate('')
+        setName('')
+        setOwner('')
+        setDesc('')
         // console.log(props.tasks)
     }
     const [name, setName] = useState('');

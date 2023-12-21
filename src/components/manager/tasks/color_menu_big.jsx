@@ -64,6 +64,11 @@ const ColorMenuBig = ({handleColorChange, ...props}) => {
 
                         </div>
                     </div>
+                    {/*<div className="row">*/}
+                    {/*    <div className="col">*/}
+                    {/*        <input type="color" color={'#EECCCC'} handleColorChange={handleColorChange} />*/}
+                    {/*    </div>*/}
+                    {/*</div>*/}
                 </div>
             </div>
         </div>
