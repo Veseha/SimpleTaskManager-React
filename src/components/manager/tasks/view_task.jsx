@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ViewTask = (props) => {
-    const delTask = (e) => {
+    const delTask = () => {
         // settasks(props.tasks.splice(props.tasks.indexOf(e.target.value), 1))
         settasks(props.tasks.filter(p => p.id !== props.task.id))
     }

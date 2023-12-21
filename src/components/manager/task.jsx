@@ -3,7 +3,7 @@ import '../style/card.css'
 import ColorMenu from "./tasks/color_menu";
 
 const Task = ({settasks, ...props}) => {
-    const delTask = (e) => {
+    const delTask = () => {
         // settasks(props.tasks.splice(props.tasks.indexOf(e.target.value), 1))
         settasks(props.tasks.filter(p => p.id !== props.task.id))
     }
@@ -47,7 +47,7 @@ const Task = ({settasks, ...props}) => {
     // }
 
     const [showColorMenu, setShowColorMenu] = useState(false);
-    const [selectedColor, setSelectedColor] = useState(props.task.bg);
+    // const [selectedColor, setSelectedColor] = useState(props.task.bg);
 
     const handleColorChange = (color) => {
         console.log(props.tasks)
