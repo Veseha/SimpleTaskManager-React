@@ -53,7 +53,7 @@ const Column = (props) => {
                                                         {...provided.draggableProps}
                                                         {...provided.dragHandleProps}
                                                     >
-                                                        <td>
+                                                        <td style={{backgroundColor: 'transparent'}}    >
                                                             <Task
                                                                 task={task}
                                                                 settasks={props.settasks}
