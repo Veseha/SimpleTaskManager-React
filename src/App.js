@@ -35,7 +35,7 @@ function App() {
     ])
 
     return (
-        <BrowserRouter>
+        <BrowserRouter asename={window.location.pathname || ''}>
             <Navbar weather={weather} change={fetchWeather}/>
             <Addtask tasks={tasks} settasks={setTasks}/>
             <Routes>

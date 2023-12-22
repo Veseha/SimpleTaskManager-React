@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/SimpleTaskManager-React/static/css/main.a038c5e1.css",
+    "main.js": "/SimpleTaskManager-React/static/js/main.f0f6d6af.js",
+    "index.html": "/SimpleTaskManager-React/index.html",
+    "main.a038c5e1.css.map": "/SimpleTaskManager-React/static/css/main.a038c5e1.css.map",
+    "main.f0f6d6af.js.map": "/SimpleTaskManager-React/static/js/main.f0f6d6af.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a038c5e1.css",
+    "static/js/main.f0f6d6af.js"
+  ]
+}
