@@ -52,9 +52,9 @@
 /*}*/
 
 
-/*.container-task{*/
-/*    position: relative;*/
-/*}*/
+.container-task{
+    position: relative;
+}
 
 .two{
     /*width: 270px;*/
@@ -172,7 +172,6 @@
     opacity: 0;
     animation: ani 0.5s forwards;
 }
-
 @keyframes ani {
     0% {opacity: 0;}
     100% {opacity: 1;}
