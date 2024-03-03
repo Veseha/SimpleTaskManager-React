@@ -13,7 +13,7 @@ function App() {
     const [weather, setWeather] = useState('')
     async function fetchWeather(){ // так получилось что мне нечего брать из других апишек в сое приложение, имеено поэтому тут будет погода, которую я спецаильно разместил в апп.джиэс чтобы вы увиделе что апишку я использую, по кракйне мере знаю как использовать:)
         try{
-            const response =await axios.get('https://api.open-meteo.com/v1/forecast?latitude=43.3199&longitude=76.9425&current=temperature_2m,rain');
+            const response = await axios.get('https://api.open-meteo.com/v1/forecast?latitude=43.3199&longitude=76.9425&current=temperature_2m,rain');
             console.log(response)
             console.log(response.data.current.temperature_2m.toString() + response.data.current_units.temperature_2m)
             setWeather(response.data.current.temperature_2m.toString() + response.data.current_units.temperature_2m);
