@@ -1,14 +1,14 @@
 import {CREATE_TASK, DELETE_TASK, FETCH_TASK, FETCH_TASKS, UPDATE_TASK} from "./actions/types";
 
 
-const initialState = {
-    tasks: [],
-};
+// const initialState = {
+//     tasks: 1,
+// };
 
-const taskReducer = (state = initialState, action) => {
+const taskReducer = (state = [], action) => {
     switch (action.type) {
         case FETCH_TASKS:
-            return { ...state, tasks: action.payload };
+            return action.payload;
         case FETCH_TASK:
             return { ...state, tasks: [...state.tasks, action.payload] };
         case CREATE_TASK:

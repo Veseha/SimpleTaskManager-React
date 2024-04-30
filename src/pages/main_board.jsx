@@ -10,7 +10,7 @@ import Addtask from "../components/manager/addtask";
 import axios from "axios";
 import Weather from "../components/API/weather";
 import {useDispatch, useSelector} from "react-redux";
-import {createTask, deleteTask, fetchTasks} from "../components/API/db_api";
+import {createTask, deleteTask, fetchTask, fetchTasks} from "../components/API/db_api";
 import {FETCH_TASKS} from "../store/actions/types";
 
 
@@ -26,8 +26,8 @@ const MainBoard = ({tasks, setTasks, ...props}) => {
     console.log(tasks);
     console.log(setTasks);
 
-    const dispatch = useDispatch()
-    const tasks2 = useSelector(state => state.tasks.tasks)
+    // const dispatch = useDispatch()
+    // const tasks2 = useSelector(state => state.tasks.tasks)
     // const getTasks = () => {
     //     dispatch({FETCH_TASKS})
     // }
@@ -42,12 +42,11 @@ const MainBoard = ({tasks, setTasks, ...props}) => {
     // }
 
     // const tasks2 = useSelector(state => state.tasks);
-    // const dispatch = useDispatch();
-    //
-    // useEffect(() => {
-    //     // Fetch tasks when the component mounts
-    //     dispatch(fetchTasks());
-    // }, [dispatch]);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fetchTasks());
+    }, [dispatch]);
 
 
     const [tasks1, setTasks1] = [tasks, setTasks];
@@ -59,7 +58,7 @@ const MainBoard = ({tasks, setTasks, ...props}) => {
                 {/*<button onClick={getTasks()}>Create New Task</button>*/}
 
                 <ul>
-                    {tasks2}
+                    {dispatch(fetchTasks())}
                     {/*{tasks2.map(task => (*/}
                     {/*    <li key={task.task_id}>*/}
                     {/*        <strong>{task.task_name}</strong>*/}

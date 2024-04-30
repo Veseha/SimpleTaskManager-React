@@ -1,7 +1,7 @@
 import axios from "axios";
 import {CREATE_TASK, DELETE_TASK, FETCH_TASKS, UPDATE_TASK} from "../../store/actions/types";
 
-const baseURL = 'localhost:3003';
+const baseURL = 'http://192.168.31.62:8080';
 
 export default class ApiClient {
     constructor(baseURL) {
@@ -95,9 +95,9 @@ export default class ApiClient {
 }
 
 
-export const fetchTasks = () => async (dispatch) => {
+export const fetchTasks = () =>  (dispatch) => {
     try {
-        const response = await axios.get(`${baseURL}/tasks`);
+        const response =  axios.get(`${baseURL}/tasks`);
         dispatch({ type: FETCH_TASKS, payload: response.data });
     } catch (error) {
         console.error('Error fetching tasks:', error);
@@ -106,7 +106,7 @@ export const fetchTasks = () => async (dispatch) => {
 
 export const fetchTask = (data) => async (dispatch) => {
     try {
-        const response = await axios.get(`${baseURL}/tasks/${data.id}`);
+        const response = await axios.get(`${baseURL}/tasks/${data}`);
         dispatch({ type: FETCH_TASKS, payload: response.data });
     } catch (error) {
         console.error('Error fetching tasks:', error);

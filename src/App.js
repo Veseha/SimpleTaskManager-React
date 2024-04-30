@@ -39,7 +39,14 @@ function App() {
 
     }
     useEffect(() => {
-         fetchWeather()
+        fetchWeather();
+
+    }, []);
+    useEffect(() => {
+        const interval = setInterval(() => {
+            fetchWeather();
+        }, 10000);
+        return () => clearInterval(interval);
     }, []);
     // useEffect(() => {
     //     const fetchTasks = async () => {
