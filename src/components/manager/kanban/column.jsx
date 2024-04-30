@@ -3,7 +3,7 @@ import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import Task from "../task";
 import '../../style/column.css'
 import Sort from "../tasks_filter/sort";
-import {isCursorAtStart} from "@testing-library/user-event/dist/utils";
+// import {isCursorAtStart} from "@testing-library/user-event/dist/utils";
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
 const Column = (props) => {

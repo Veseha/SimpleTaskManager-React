@@ -9,6 +9,9 @@ import Task from "../components/manager/task";
 import Addtask from "../components/manager/addtask";
 import axios from "axios";
 import Weather from "../components/API/weather";
+import {useDispatch, useSelector} from "react-redux";
+import {createTask, deleteTask, fetchTasks} from "../components/API/db_api";
+import {FETCH_TASKS} from "../store/actions/types";
 
 
 const MainBoard = ({tasks, setTasks, ...props}) => {
@@ -23,10 +26,50 @@ const MainBoard = ({tasks, setTasks, ...props}) => {
     console.log(tasks);
     console.log(setTasks);
 
+    const dispatch = useDispatch()
+    const tasks2 = useSelector(state => state.tasks.tasks)
+    // const getTasks = () => {
+    //     dispatch({FETCH_TASKS})
+    // }
+    // const TaskList = ({ tasks, fetchTasks }) => {
+    //     useEffect(() => {
+    //         fetchTasks();
+    //     }, []);
+    //
+    //
+    //     const getTasks = () => {
+    //   dispatch({type:FETCH_TASKS})
+    // }
+
+    // const tasks2 = useSelector(state => state.tasks);
+    // const dispatch = useDispatch();
+    //
+    // useEffect(() => {
+    //     // Fetch tasks when the component mounts
+    //     dispatch(fetchTasks());
+    // }, [dispatch]);
+
+
     const [tasks1, setTasks1] = [tasks, setTasks];
 
     return (
         <div className="App">
+            <div>
+                <h1>Task List</h1>
+                {/*<button onClick={getTasks()}>Create New Task</button>*/}
+
+                <ul>
+                    {tasks2}
+                    {/*{tasks2.map(task => (*/}
+                    {/*    <li key={task.task_id}>*/}
+                    {/*        <strong>{task.task_name}</strong>*/}
+                    {/*        <p>{task.task_desc}</p>*/}
+                    {/*        /!* Other task properties *!/*/}
+                    {/*        /!*<button onClick={() => handleDeleteTask(task.task_id)}>Delete</button>*!/*/}
+                    {/*    </li>*/}
+                    {/*))}*/}
+                </ul>
+            </div>
             <Kanban tasks={tasks1} settasks={setTasks1}/>
 
         </div>

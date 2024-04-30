@@ -1,10 +1,14 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import '../style/card.css'
 import ColorMenu from "./tasks/color_menu";
 import Unclick from "../UI/unclick";
 import {useNavigate} from "react-router-dom";
+import ApiClient from "../API/db_api";
+
 
 const Task = ({settasks, ...props}) => {
+
+
     const delTask = () => {
         // settasks(props.tasks.splice(props.tasks.indexOf(e.target.value), 1))
         settasks(props.tasks.filter(p => p.id !== props.task.id))
