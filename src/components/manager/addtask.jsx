@@ -1,8 +1,11 @@
 import React, {useRef, useState} from 'react';
 import {Container, Row, Col, Card, Button, Form} from 'react-bootstrap';
+import {useDispatch} from "react-redux";
+import {createTask} from "../API/db_api";
 
 
 const Addtask = (props) => {
+    const dispatch = useDispatch();
 
     const addNewTask = (e) => {
         e.preventDefault();
@@ -18,7 +21,9 @@ const Addtask = (props) => {
                 priority:'common',
                 epic:'React-app',
                 bg:'white'}
-        props.settasks([...props.tasks, newTask])
+        // props.settasks([...props.tasks, newTask])
+        console.log(newTask, ' newww task')
+        dispatch(createTask(newTask));
 
         setStatus('')
         setDate('')
@@ -32,8 +37,6 @@ const Addtask = (props) => {
     const [owner, setOwner] = useState('');
     const [date, setDate] = useState('');
     const [status, setStatus] = useState('');
-
-
 
     return (
         <div>
@@ -87,9 +90,9 @@ const Addtask = (props) => {
                                         onChange={e => setStatus(e.target.value)}
                                         className="form-select" aria-label="Default select example" id="status_addtask">
                                         <option ></option>
-                                        <option value="To Do">To Do</option>
-                                        <option value="In Progress">In Progress</option>
-                                        <option value="Done">Done</option>
+                                        <option value="1">To Do</option>
+                                        <option value="2">In Progress</option>
+                                        <option value="3">Done</option>
                                     </select>
                                 </div>
                                 <div className="modal-footer">

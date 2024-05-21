@@ -5,27 +5,12 @@ import '../../style/column.css'
 import Sort from "../tasks_filter/sort";
 // import {isCursorAtStart} from "@testing-library/user-event/dist/utils";
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import {useDispatch, useSelector} from "react-redux";
 
 const Column = (props) => {
-    // const onDragEnd = (result) => {
-    //     const { destination, source, draggableId } = result;
-    //
-    //     if (!destination) {
-    //         return;
-    //     }
-    //
-    //     if (
-    //         destination.droppableId !== source.droppableId ||
-    //         destination.index !== source.index
-    //     ) {
-    //         const updatedTasks = Array.from(props.tasks);
-    //         const task = updatedTasks.find((task) => task.id === parseInt(draggableId, 10));
-    //
-    //         task.status = props.columns[destination.droppableId].title;
-    //
-    //         props.settasks(updatedTasks);
-    //     }
-    // };
+    const dispatch = useDispatch();
+    const getAllTasks = useSelector(state => state.tasks)
+
 
     return (
 
@@ -37,10 +22,10 @@ const Column = (props) => {
                             <Card.Title>{props.args.title}</Card.Title>
                             <table className="table">
                                 <tbody>
-                                {props.tasks.filter(task => task.status === props.args.title).length !== 0
+                                {getAllTasks.filter(task => task.status === props.args.id).length !== 0
                                     ?
-                                    props.tasks
-                                        .filter((task) => task.status === props.args.title)
+                                    getAllTasks
+                                        .filter((task) => task.status === props.args.id)
                                         .map((task, index) => (
                                             <Draggable
                                                 key={task.id}
@@ -55,9 +40,10 @@ const Column = (props) => {
                                                     >
                                                         <td style={{backgroundColor: 'transparent'}}    >
                                                             <Task
-                                                                task={task}
+                                                                id={task.id}
+                                                                // task={task}
                                                                 settasks={props.settasks}
-                                                                tasks={props.tasks}
+                                                                // tasks={getAllTasks}
                                                             />
                                                         </td>
                                                     </tr>
@@ -101,13 +87,13 @@ export default Column;
 //
 //                     <table className="table">
 //                         <tbody>
-//                             {props.tasks.tasks_filter(task => task.status === props.args.title).length !== 0
-//                                 ? props.tasks
+//                             {getAllTasks.tasks_filter(task => task.status === props.args.title).length !== 0
+//                                 ? getAllTasks
 //                                 .tasks_filter(task => task.status === props.args.title)
 //                                 .map(task =>
 //                                 <tr key={task.id}>
 //                                     <td>
-//                                         <Task task={task}  settasks={props.settasks} tasks={props.tasks}/>
+//                                         <Task task={task}  settasks={props.settasks} tasks={getAllTasks}/>
 //                                     </td>
 //                                 </tr>
 //                                 )

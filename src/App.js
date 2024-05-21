@@ -11,20 +11,7 @@ import Addtask      from "./components/manager/addtask";
 import ApiClient    from "./components/API/db_api";
 import {useDispatch, useSelector} from "react-redux";
 import {cashReducer} from "./store/cashReducer";
-
-// const apiClient = new ApiClient('localhost:3001');
-
-
-
 function App() {
-    // const dispatch = useDispatch()
-    // const cash = useSelector(state => state.cash.cash)
-
-    // const addCash = (cash) => {
-    //   dispatch({type:"ACTION_1", payload: cash})
-    // }
-
-    // const [tasks, setTasks] = useState([]);
     const [weather, setWeather] = useState('')
     async function fetchWeather(){ // так получилось что мне нечего брать из других апишек в сое приложение, имеено поэтому тут будет погода, которую я спецаильно разместил в апп.джиэс чтобы вы увиделе что апишку я использую, по кракйне мере знаю как использовать:)
         try{
@@ -48,14 +35,7 @@ function App() {
         }, 10000);
         return () => clearInterval(interval);
     }, []);
-    // useEffect(() => {
-    //     const fetchTasks = async () => {
-    //         const data = await apiClient.getTasks();
-    //         setTasks(data);
-    //     };
-    //
-    //     fetchTasks();
-    // }, []);
+
 
 
     const [tasks, setTasks] = useState([

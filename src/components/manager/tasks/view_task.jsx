@@ -4,71 +4,65 @@ import ColorMenu from "./color_menu";
 import Unclick from "../../UI/unclick";
 import Color_menu_big from "./color_menu_big";
 import ColorMenuBig from "./color_menu_big";
+import {useDispatch, useSelector} from "react-redux";
+import {deleteTask, updateTasks} from "../../API/db_api";
 
 const ViewTask = ({setTasks, ...props}) => {
     const params = useParams();
     const route = useNavigate();
 
-    let task = props.tasks.filter(p => p.id.toString() === params.id)[0];
-    // console.log(params.id)
-    // console.log(task);
+    const dispatch = useDispatch();
+    let task = useSelector(state => state.tasks.filter(task => task.id.toString() === params.id)[0]);
+    console.log(task);
+    const getAllTasks = useSelector(state => state.tasks)
 
 
     const delTask = () => {
-        setTasks(props.tasks.filter(p => p.id.toString() !== params.id));
+        dispatch(deleteTask(task.id));
         route('/')
-        // console.log(props.tasks);
     }
 
     const [showColorMenu, setShowColorMenu] = useState(false);
-    // const [selectedColor, setSelectedColor] = useState(task.bg);
 
     const handleColorChange = (color) => {
-        console.log(props.tasks)
         let curtask = task;
         curtask.bg = color;
-        console.log({...props.tasks.filter(p => p.id !== task.id), curtask})
-
-        setTasks([...props.tasks.filter(p => p.id !== task.id), curtask])
-
-        console.log('ok')
-        // setSelectedColor(color);
-        // setShowColorMenu(false);
+        dispatch(updateTasks(curtask));
     };
 
     const tdTask = (e) => {
         let t1 = task;
-        t1.status = 'To Do'
-        let l1 = props.tasks.filter(p => p.id !== task.id)
-        setTasks([...l1, t1])
+        t1.status = 1
+        dispatch(updateTasks(t1));
+
     }
     const ipTask = (e) => {
         let t1 = task;
-        t1.status = 'In Progress'
-        let l1 = props.tasks.filter(p => p.id !== task.id)
-        setTasks([...l1, t1])
+        t1.status = 2
+        dispatch(updateTasks(t1));
+
     }
     const doneTask = (e) => {
         let t1 = task;
-        t1.status = 'Done'
-        let l1 = props.tasks.filter(p => p.id !== task.id)
-        setTasks([...l1, t1])
+        t1.status = 3
+        dispatch(updateTasks(t1));
+
     }
 
     function GetNavigationTD(task) {
-        if(task.props.status !== 'To Do') {
+        if(task.props.status !== 1) {
             return <button className='btn btn-warning btn-sm' onClick={e => tdTask(e)}>To Do</button>
         }
         return <button className='btn btn-secondary btn-sm disabled' disabled onClick={e => tdTask(e)}>To Do ✓</button>;
     }
     function GetNavigationIP(task) {
-        if(task.props.status !== 'In Progress') {
+        if(task.props.status !== 2) {
             return <button className='btn btn-primary btn-sm' onClick={e => ipTask(e)}>In Progress</button>
         }
         return <button className='btn btn-secondary btn-sm disabled' disabled onClick={e => ipTask(e)}>In Progress ✓</button>;
     }
     function GetNavigationDN(task) {
-        if(task.props.status !== 'Done') {
+        if(task.props.status !== 3) {
             return <button className='btn btn-success btn-sm' onClick={e => doneTask(e)}>Done</button>
         }
         return <button className='btn btn-secondary btn-sm disable' disabled onClick={e => doneTask(e)}>Done ✓</button>;
@@ -98,7 +92,7 @@ const ViewTask = ({setTasks, ...props}) => {
                                 <div className="d-flex justify-content-between  px-3 align-items-center pb-3">
                                     <div className="d-flex justify-content-start align-items-center">
                                         <i className="mdi mdi-calendar-clock date"></i>
-                                        <span className="quote2 pl-2">Create date: {task.createDate}</span>
+                                        <span className="quote2 pl-2">Create date: {task.createdate}</span>
                                     </div>
                                 </div>
                             </div>

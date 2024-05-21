@@ -1,6 +1,12 @@
 import {CREATE_TASK, DELETE_TASK, FETCH_TASK, FETCH_TASKS, UPDATE_TASK} from "./actions/types";
 
-const taskReducer = (state = [], action) => {
+interface Action {
+    type: string;
+    payload: any;
+}
+
+
+const taskReducer = (state: ITask[] = [], action: Action): ITask[] => {
     switch (action.type) {
         case FETCH_TASKS:
             console.log('FETCH_TASK')
